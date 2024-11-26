@@ -7,8 +7,8 @@ export async function addProductToCart(productID, quantity) {
       Authorization: `Bearer ${token}`,
     };
     const response = await axios.patch(
-      "http://localhost:10000/user/addToCart",
-      `${process.env.PUBLIC_API_BASE}/user/addToCart`,
+      `${process.env.REACT_APP_API_ENDPOINT}/user/addToCart`,
+     
       { productID, quantity },
       { headers }
     );
@@ -43,7 +43,7 @@ export async function deleteItemFromCart(productID) {
       };
 
       // Send DELETE request with productID in the body
-      const response = await axios.delete('http://localhost:10000/user/deleteFromCart', {
+      const response = await axios.delete( `${process.env.REACT_APP_API_ENDPOINT}/user/deleteFromCart`, {
           headers,
           data: { productID }  // Send productID in the request body
       });

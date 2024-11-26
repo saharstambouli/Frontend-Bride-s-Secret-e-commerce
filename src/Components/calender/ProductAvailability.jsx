@@ -33,7 +33,7 @@ const Product = () => {
             try {
                 setLoading(true);
                 const productData = await getProductByID(id);
-                const rentsData = await axios.get(`http://localhost:10000/product/getrents/${id}`);
+                const rentsData = await axios.get(`${process.env.REACT_APP_API_ENDPOINT}/product/getrents/${id}`);
 
                 if (productData) {
                     setProduct(productData);

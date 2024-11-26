@@ -1,6 +1,6 @@
 import axios from 'axios'
-axios.defaults.baseURL=" http://localhost:10000"
-// axios.defaults.baseURL=process.env.PUBLIC_API_BASE
+// axios.defaults.baseURL=" http://localhost:10000"
+
 
 export async function toggleProduct(id) {
     try {
@@ -9,7 +9,7 @@ export async function toggleProduct(id) {
         const headers = {
             'Authorization': `Bearer ${token}`,
         };
-        const response = await axios.patch(`/user/toggleProduct`, { productID: id }, { headers });
+        const response = await axios.patch(`${process.env.REACT_APP_API_ENDPOINT}/user/toggleProduct`, { productID: id }, { headers });
 
         console.log("API Response:", response); // Log the full response
 
@@ -43,7 +43,7 @@ export async function deleteItemFromWishList(productID) {
         };
   
         // Send DELETE request with productID in the body
-        const response = await axios.delete(`/user/deleteFromWishList`, {
+        const response = await axios.delete(`${process.env.REACT_APP_API_ENDPOINT}/user/deleteFromWishList`, {
             headers,
             data: { productID }  // Send productID in the request body
         });

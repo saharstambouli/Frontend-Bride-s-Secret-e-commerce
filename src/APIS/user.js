@@ -2,7 +2,7 @@ import axios from 'axios';
 
 export async function login(email, password) {
     try {
-        const response = await axios.post("http://localhost:10000/auth/login", { email, password });
+        const response = await axios.post(`${process.env.REACT_APP_API_ENDPOINT}/auth/login`, { email, password });
         console.log("API Response:", response); 
         if (response.status === 200) {
             return response.data;
@@ -29,7 +29,7 @@ export async function getUser() {
         const headers = {
             'Authorization': `Bearer ${token}`
         };
-        const response = await axios.get('http://localhost:10000/user/getuser', { headers });
+        const response = await axios.get(`${process.env.REACT_APP_API_ENDPOINT}/user/getuser`, { headers });
         console.log("API Response:", response); // Check full response
         if (response.status === 200) {
             return response.data;
@@ -46,7 +46,7 @@ export async function getUser() {
 export async function register(data) {
     console.log(data);
     try {
-        const response = await axios.post('http://localhost:10000/user/register', data)
+        const response = await axios.post(`${process.env.REACT_APP_API_ENDPOINT}/user/register`, data)
         if (response.status == 201) {
             return { success: "User Registered" };
         }
@@ -67,7 +67,7 @@ export async function register(data) {
 
 export async function forgotPassword(email) {
     try {
-        const respnse = await axios.post('http://localhost:10000/auth/forgetPassword', { email });
+        const respnse = await axios.post(`${process.env.REACT_APP_API_ENDPOINT}/auth/forgetPassword`, { email });
         if (respnse.status == 201) {
             return { success: "Link has been sent" }
         }
@@ -84,7 +84,7 @@ export async function resetPassword(tokenPass, newPassword) {
         const headers = {
             'Authorization': `Bearer ${tokenPass}`
         }
-        const response = await axios.post('http://localhost:10000/auth/resetPassword', { newPassword }, { headers })
+        const response = await axios.post(`${process.env.REACT_APP_API_ENDPOINT}/auth/resetPassword`, { newPassword }, { headers })
         if (response.status == 201) {
             return { success: "Password Changed Successfully" };
         }
@@ -112,7 +112,7 @@ export async function purchase() {
         };
 
         // Pass headers as the third argument, body empty
-        const response = await axios.post('http://localhost:10000/user/purchase', {}, { headers });
+        const response = await axios.post(`${process.env.REACT_APP_API_ENDPOINT}/user/purchase`, {}, { headers });
 
         console.log('Response from API:', response); 
 
@@ -133,7 +133,7 @@ export async function purchase() {
 
 export const sendNewsletterSubscription = async (email) => {
     try {
-      const response = await axios.post("http://localhost:10000/user/send-newsletter", { email });
+      const response = await axios.post(`${process.env.REACT_APP_API_ENDPOINT}/user/send-newsletter`, { email });
       console.log("Response from backend:", response.data); 
 
       return response.data;

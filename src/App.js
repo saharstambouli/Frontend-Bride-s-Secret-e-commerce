@@ -30,15 +30,24 @@ import CheckoutForm from "./Components/ShoppingCart/checkoutSection/Checkout";
 import ProductAvailability from "./Components/calender/ProductAvailability";
 import Confirmation from "./Components/ShoppingCart/Confirmation/Confirmation";
 import ProductForRent from "./Components/Product/ProductMain/ProductForRent";
+import { useEffect } from "react";
 
 import { Toaster } from "react-hot-toast";
 
 
 const App = () => {
+
+
+  useEffect(() => {
+console.log("env", process.env.REACT_APP_API_ENDPOINT);
+  }, []);
+
   return (
     <>
       <Popup />
       <ScrollToTop />
+
+
       <BrowserRouter>
         <Header />
         <Routes>
