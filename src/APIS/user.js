@@ -163,14 +163,10 @@ export const sendNewsletterSubscription = async (email) => {
           },
         }
       );
-      return response.data;
+      return { success: response.data.message };
     } catch (error) {
-        console.error("Error Status:", error.response?.status);
-        console.error("Error Data:", error.response?.data);
-        return error.response?.data || {
-          success: false,
-          message: "Unexpected error occurred. Please contact support.",
-        };
+       
+      return { message: error.response.data.message };
       }
     };
 

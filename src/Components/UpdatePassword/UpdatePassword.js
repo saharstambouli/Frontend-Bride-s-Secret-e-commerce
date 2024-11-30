@@ -5,6 +5,7 @@ import { setIsAuth, setUser } from "../../Reducers/User/userSlice";
 import { updatePassword } from "../../APIS/user";
 import { useNavigate } from "react-router-dom";
 
+
 const UpdatePassword = () => {
 
 
@@ -24,7 +25,7 @@ const UpdatePassword = () => {
 
   useEffect(() => {
     if (!isAuthenticated) {
-      navigate("/loginSignUp"); 
+      navigate("/loginSignUp");
     }
   }, [isAuthenticated, navigate]);
 
@@ -40,33 +41,30 @@ const UpdatePassword = () => {
     e.preventDefault();
     setLoading(true);
     setErrors({});
-  
+
     // Validate the passwords (ensure they match)
     if (inputs.newPassword !== inputs.confirmNewPassword) {
       setErrors({ confirmNewPassword: "New passwords do not match." });
       setLoading(false);
       return;
     }
-  
+
     try {
       const response = await updatePassword(inputs.oldPassword, inputs.newPassword);
       console.log("Update password response:", response);
-  
+
       if (response.success) {
-        setSuccess(true); 
-          console.log("Password updated successfully. Navigating to home...");
-  
+        setSuccess(true);
+        console.log("Password updated successfully. Navigating to home...");
+
         // Clear the input fields after successful password change
         setInputs({
           oldPassword: "",
           newPassword: "",
           confirmNewPassword: "",
         });
-  
-        // Navigate to the home page directly after password update
-       
-          navigate("/");  
-       
+
+
       } else {
         setErrors({ general: response.message || "An error occurred. Please try again." });
       }
@@ -76,14 +74,21 @@ const UpdatePassword = () => {
       setLoading(false);
     }
   };
-  
+
   useEffect(() => {
     if (success) {
-      
-        navigate("/"); 
-     
-    }
-  }, [success, navigate]);
+
+
+      setTimeout(() => {
+
+      navigate("/");
+        console.log("console use effect")
+
+      }, 4000);
+
+      console.log("console", success)
+
+    }}, [success,navigate]);
 
 
   if (isAuthenticated === null) return <h1>Loading...</h1>;
@@ -93,11 +98,7 @@ const UpdatePassword = () => {
       <div className="loginSignUpContainer">
         <div className="loginSignUpTabsContent">
           <div className="loginSignUpTabsContentLogin">
-            {success && (
-              <p className="success-message">
-                Password updated successfully!
-              </p>
-            )}
+
             <form onSubmit={handleSubmit}>
               <input
                 type="password"
@@ -143,6 +144,12 @@ const UpdatePassword = () => {
 
               {errors.general && (
                 <p style={{ color: "red", fontSize: 12 }}>{errors.general}</p>
+              )}
+
+              {success && (
+                <p className="success-message">
+                  Password updated successfully!
+                </p>
               )}
             </form>
           </div>
