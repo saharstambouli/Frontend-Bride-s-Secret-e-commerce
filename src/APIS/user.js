@@ -149,3 +149,57 @@ export const sendNewsletterSubscription = async (email) => {
       }
     }
   };
+
+
+  export const updatePassword = async (oldPassword, newPassword) => {
+    try {
+      const response = await axios.put(
+        `${process.env.REACT_APP_API_ENDPOINT}/auth/updatePassword`,
+        { oldPassword, newPassword },
+        {
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${localStorage.getItem("token")}`,
+          },
+        }
+      );
+      return response.data;
+    } catch (error) {
+        console.error("Error Status:", error.response?.status);
+        console.error("Error Data:", error.response?.data);
+        return error.response?.data || {
+          success: false,
+          message: "Unexpected error occurred. Please contact support.",
+        };
+      }
+    };
+
+
+    export const sendMessages = async (email, name, message) => {
+        try {
+          const response = await axios.post(`${process.env.REACT_APP_API_ENDPOINT}/user/send-messages`, { email, name, message });
+          console.log("Response from backend:", response.data);
+      
+          if (response.data.success) {
+            // Handle success, such as showing a confirmation message to the user
+            return response.data; 
+          } else {
+            alert(response.data.message || "There was an issue with your message.");
+          }
+        } catch (error) {
+          if (error.response) {
+            // The server responded with a status code outside of the range 2xx
+            console.error("Error response from backend:", error.response.data);
+            alert(error.response.data.message || "There was an issue sending the message.");
+          } else if (error.request) {
+            // The request was made but no response was received
+            console.error("No response received:", error.request);
+            alert("The server did not respond. Please try again later.");
+          } else {
+            // Some other error occurred during setting up the request
+            console.error("Error in sending request:", error.message);
+            alert("There was an error processing your request. Please try again later.");
+          }
+        }
+      };
+    

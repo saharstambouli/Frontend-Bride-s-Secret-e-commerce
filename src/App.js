@@ -30,6 +30,8 @@ import CheckoutForm from "./Components/ShoppingCart/checkoutSection/Checkout";
 import ProductAvailability from "./Components/calender/ProductAvailability";
 import Confirmation from "./Components/ShoppingCart/Confirmation/Confirmation";
 import ProductForRent from "./Components/Product/ProductMain/ProductForRent";
+import UpdatePassword from "./Components/UpdatePassword/UpdatePassword";
+
 import { useEffect } from "react";
 
 import { Toaster } from "react-hot-toast";
@@ -74,6 +76,7 @@ console.log("env", process.env.REACT_APP_API_ENDPOINT);
           <Route path="*" element={<NotFound />} />
          <Route path="/product availability/:id" element={<ProductAvailability />} />
          <Route path="/Confirmation" element={<Confirmation />} />
+         <Route path="/UpdatePassword" element={<UpdatePassword />} />
 
 
         </Routes>

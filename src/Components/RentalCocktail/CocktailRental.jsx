@@ -107,20 +107,14 @@ const ShopDetails = () => {
               <Link to="/" onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}>
                 Home
               </Link>
-              &nbsp;/&nbsp;
-              <Link to="/shop">The Shop</Link>
+              {/* &nbsp;/&nbsp; */}
+              {/* <Link to="/shop">The Shop</Link> */}
             </div>
             <div className="filterLeft">
               <IoFilterSharp />
               <p>Filter</p>
             </div>
-            <div className="shopDetailsSort">
-              <select name="sort" id="sort">
-                <option value="default">Default Sorting</option>
-                <option value="Featured">Featured</option>
-                <option value="bestSelling">Best Selling</option>
-              </select>
-            </div>
+         
           </div>
           <div className="shopDetailsProducts">
             <div className="shopDetailsProductsContainer">

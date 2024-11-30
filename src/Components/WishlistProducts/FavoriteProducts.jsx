@@ -15,7 +15,7 @@ import {deleteItemFromWishList} from "../../APIS/WishList";
 // Function to fetch product by ID (make sure this is defined somewhere)
 const getProductByID = async (id) => {
   try {
-    const response = await axios.get(`/product/getproduct/${id}`);
+    const response = await axios.get(`${process.env.REACT_APP_API_ENDPOINT}/product/getproduct/${id}`);
     if (response.status === 200) {
       return response.data;
     }

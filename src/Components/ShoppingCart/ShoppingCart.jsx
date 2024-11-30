@@ -104,7 +104,7 @@ const ShoppingCart = () => {
           onClick={() => handleTabClick("cartTab1")}
         >
           <div className="shoppingCartTabsNumber">
-            <h3>01</h3>
+            {/* <h3>01</h3> */}
             <div className="shoppingCartTabsHeading">
               <h3>Shopping Bag</h3>
               <p>Manage Your Items List</p>
@@ -116,26 +116,26 @@ const ShoppingCart = () => {
           onClick={() => handleTabClick("cartTab2")}
           disabled={cart.length === 0}
         >
-          <div className="shoppingCartTabsNumber">
+          {/* <div className="shoppingCartTabsNumber">
             <h3>02</h3>
             <div className="shoppingCartTabsHeading">
               <h3>Shipping and Checkout</h3>
               <p>Checkout Your Items List</p>
             </div>
-          </div>
+          </div> */}
         </button>
         <button
           className={activeTab === "cartTab3" ? "active" : ""}
           onClick={() => handleTabClick("cartTab3")}
           disabled={cart.length === 0}
         >
-          <div className="shoppingCartTabsNumber">
-            <h3>03</h3>
+          {/* <div className="shoppingCartTabsNumber">
+            <h3>02</h3>
             <div className="shoppingCartTabsHeading">
               <h3>Confirmation</h3>
               <p>Review and Submit Your Order</p>
             </div>
-          </div>
+          </div> */}
         </button>
       </div>
 
@@ -161,7 +161,7 @@ const ShoppingCart = () => {
           </div>
         )}
 
-        {activeTab === "cartTab2" && (
+        {/* {activeTab === "cartTab2" && (
            <div className="checkoutContent">
            <CheckoutForm 
              cartProducts={cartProducts}
@@ -172,9 +172,9 @@ const ShoppingCart = () => {
              scrollToTop={scrollToTop}
            />
          </div>
-        )}
+        )} */}
 
-        {activeTab === "cartTab3" && (
+        {/* {activeTab === "cartTab3" && (
           <div className="confirmationContent">
             <h2>Order Confirmation</h2>
             <p>Your order has been successfully placed. Thank you for shopping with us!</p>
@@ -242,7 +242,7 @@ const ShoppingCart = () => {
               </div>
             </div>
           </div>
-        )}
+        )} */}
       </div>
     </div>
   );

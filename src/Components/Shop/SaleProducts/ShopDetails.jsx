@@ -205,8 +205,8 @@ const handlePriceChange = (filteredByPrice) => {
               <Link to="/" onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}>
                 Home
               </Link>
-              &nbsp;/&nbsp;
-              <Link to="/shop">The Shop</Link>
+              {/* &nbsp;/&nbsp;
+              <Link to="/shop">The Shop</Link> */}
             </div>
           </div>
           <div className="shopDetailsProducts">
